@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SELF=`which "$0" 2> /dev/null`
+[ $? -gt 0 -a -f "$0" ] && SELF="./$0"
+
+JAR="target/index_logs-assembly-*-SNAPSHOT.jar"
+
+if [ ! -f ${JAR} ]; then
+  echo "Cannot find jar, compile using `sbt assembly`"
+  exit 1
+fi
+
+JAVA=java
+if [ -n "${JAVA_HOME}" ]; then
+  JAVA="${JAVA_HOME}/bin/java"
+fi
+
+exec "${JAVA}" ${java_args} -jar ${JAR} "$@"
+exit 1

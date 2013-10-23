@@ -1,0 +1,9 @@
+project/
+target/*
+!index_logs-assembly-*-SNAPSHOT.jar
+.cache
+.classpath
+.project
+.settings
+.idea
+.idea_modules/
